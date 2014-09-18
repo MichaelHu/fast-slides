@@ -26,7 +26,7 @@ Markdown爱好者的福音 ———— 帮助您将Markdown语法编写的文�
 ## 语法
 
 ### 2.1 基础语法
-在markdown语法基础上进行了扩展，markdown语法请参考<a href="./grammar.md.html">这里</a>
+在markdown语法基础上进行了扩展，markdown语法请参考<a href="https://github.com/MichaelHu/fast-slides/blob/master/docs/grammar.md">这里</a>
 
 ### 2.2 扩展语法
 1. `@s [attr-list]`：分隔幻灯片，必须从第一列开始写，单独一行。

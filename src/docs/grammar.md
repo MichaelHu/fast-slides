@@ -136,18 +136,32 @@ markdown语法支持的`原生block-level标签`有：`table, tr, td, div, heade
 2. 标签相关内容在`一行内`完成
 
 例如以下div会原样输出：
+
+    ```html
     <div class="list">....
+    ```
 
 而以下div(`没有行首开始编写，|_|代表空格`)会被嵌套在p标签内：
+
+    ```html
     |_|<div class="list">...
+    ```
 
 输出为：
+
+    ```html
     <p> <div class="list">...</p>
+    ```
 
 如果要输出一个table内容，可以这么写：
+
+    ```javascript
     <table><tr><td>name</td><td>age</td></tr><tr><td>Michael</td><td>32</td></tr></table>
+    ```
 
 这样显得可读性不好，也不容易编辑，但是`tr, td`标签也是可以原样输出的，所以可以这么些：
+
+    ```javascript
     <table>
     <tr>
     <td>name</td>
@@ -158,3 +172,4 @@ markdown语法支持的`原生block-level标签`有：`table, tr, td, div, heade
     <td>32</td>
     </tr>
     </table>
+    ```

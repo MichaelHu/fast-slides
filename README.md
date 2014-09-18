@@ -75,10 +75,15 @@ Markdown爱好者的福音 ———— 帮助您将Markdown语法编写的文�
     
 ## 安装和使用
 
-为了避免必须通过svn提交以后才能查看最终效果，提高编写代码的效率，
-可以通过下载以下工具包，并在本地部署好。就可以通过预览功能，`先预览无误以后，再行提交`。
+下载程序包并在本地做简单部署，就可以了。具体说明一下：
 
-* `下载地址`：<a href="/docs/hudamin/markdown/download/slides.tar.gz">slides.tar.gz[`2014-09-17新版`]</a>
+* `下载`：
+    1. `git clone`
+
+            git clone https://github.com/MichaelHu/fast-slides.git
+
+    2. 也可以直接通过`Download ZIP`将项目文件下载到本地
+
 * `部署以及使用方法`：
     1. `Windows`：
         1. 下载以后解包至`C:\slides`

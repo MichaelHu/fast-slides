@@ -4,16 +4,7 @@
 
 `MARKDOWN`作为一种非官方的流行HTML编写语言，有多种实现方案。百度新闻文档库的MARKDOWN解析器是基于lex-yacc (flex-bison)编写的C解析器，其解析的语法是<a href="http://daringfireball.net/projects/markdown/" target="_blank">markdown语法</a>的一个子集。
 
-`GITHUB地址`：<a href="https://github.com/MichaelHu/capp/tree/master/src/lex_yacc/markdown_pro">`https://github.com/MichaelHu/capp/tree/master/src/lex_yacc/markdown_pro`</a>
-
-目前该解析器提供了两个版本：
-* `markdown`，提供块级元素解析和內联级元素解析
-* `markdown_pro`，只提供块级元素解析，内联级元素只提供code解析。这正是我们使用的解析器
-
-它们的`使用场景`：
-* markdown，适用于`严格`进行字符转义的文档
-* markdown_pro，适用于绝大部分`编写随意`的文档
-
+`markdown解析器GITHUB地址`：<a href="https://github.com/MichaelHu/markdown-slides">`https://github.com/MichaelHu/markdown-slides`</a>
 
 ## 2. 标签支持能力
 
@@ -28,6 +19,8 @@
         <img src="url">
 
 3. 支持`多级嵌套`列表
+
+4. 支持`@s [attr-list]`以及`@vs [attr-list]`语法，用于幻灯片分隔，这部分在本项目根部`README.md`说明。
 
 4. 支持`嵌套代码段`
 
@@ -137,31 +130,22 @@ markdown语法支持的`原生block-level标签`有：`table, tr, td, div, heade
 
 例如以下div会原样输出：
 
-    ```html
     <div class="list">....
-    ```
 
 而以下div(`没有行首开始编写，|_|代表空格`)会被嵌套在p标签内：
 
-    ```html
     |_|<div class="list">...
-    ```
 
 输出为：
 
-    ```html
     <p> <div class="list">...</p>
-    ```
 
 如果要输出一个table内容，可以这么写：
 
-    ```javascript
     <table><tr><td>name</td><td>age</td></tr><tr><td>Michael</td><td>32</td></tr></table>
-    ```
 
 这样显得可读性不好，也不容易编辑，但是`tr, td`标签也是可以原样输出的，所以可以这么些：
 
-    ```javascript
     <table>
     <tr>
     <td>name</td>
@@ -172,4 +156,3 @@ markdown语法支持的`原生block-level标签`有：`table, tr, td, div, heade
     <td>32</td>
     </tr>
     </table>
-    ```

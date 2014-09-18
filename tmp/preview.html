@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="http://db-news-fe2.vm.baidu.com:8520/docs/markdown_res/css/markdown-6.css" />
+    <link rel="stylesheet" type="text/css" href="http://db-news-fe2.vm.baidu.com:8520/docs/markdown_res/css/nav.css" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <style type="text/css">
+        img {max-width: 100%; }
+        pre, code {color: #048ebd; }
+        li>p {display: block;}
+        p>code, li>code {font-size: 13px; color: red;}
+        blockquote {display:block; border-left: 4px solid #abc; margin: 30px 0; padding: 11px 20px 1px;}
+    </style>
+    <script type="text/javascript" src="http://db-news-fe2.vm.baidu.com:8520/docs/markdown_res/js/jquery-1.9.1.js"></script>
+</head>
+<body>
+    <div id="nav">
+<a href="http://db-news-fe2.vm.baidu.com:8520/docs/index.md.html">首页</a>
+    </div>
+
+<p>% Guide to BSTR and C String Conversions
+% hudamin 
+% 2011-07-26</p>
+<h2> Introduction</h2>
+<p>One of the confusing aspects of Windows programming is managing the conversion of Visual Basic style strings to/from C language style strings.  It isn't that it is so difficult, it is just difficult to remember the details, it is usually not done often, the MSDN documentation so voluminous that it is difficult to find answers to your questions.  But the worst part is that you could perform some typecast that compiles fine, but doesn't work the way you expect.  This results code that doesn't work, and the bugs are hard to track down.  After some experience, you learn to make sure your string conversions are doing what you expect.</p>
+<p>C strings are arrays of characters terminated by a NULL character.  Visual Basic strings differ in that the length of the string preceded the characters in the string.  So a VB string knows it's own length.  In addition, all VB strings are Unicode (16 bits per character).</p>
+<h2> String Types</h2>
+<p>BSTR/C String conversions are required if:</p>
+<ul><li>You are doing COM programming in C/C++</li>
+<li>You are writing multiple language applications, such as C++ DLL's accessed by Visual Basic applications. </li></ul>
+<h3> C Language String Types and Classes</h3>
+<p>This article deals with the following C/MFC/ATL string types:</p>
+<ul><li>char/wchar/TCHAR -- The C strings for ANSI and Unicode</li>
+<li>CString -- The C++/MFC class wrapper for C strings</li>
+<li>BSTR -- The Visual Basic string type</li>
+<li>_bstr_t -- A C++ class wrapper for the Visual Basic string type</li>
+<li>CComBSTR -- Yet another C++ class wrapper for the Visual Basic string type used predominately in ATL code</li></ul>
+<h3> Demo Project</h3>
+<p>The demo project is just an MFC dialog based application with buttons for each type of conversion.  It is built using VC++ 6.0.  It uses a couple of support functions you may find helpful:</p>
+<pre><code>:::cpp
+BSTR GetBSTR()
+{
+    _bstr_t bstr1(_T("This is the test string."));
+</code></pre>
+<p>So let's get to it.  Here are the conversion techniques:</p>
+<h3> Converting BSTR to _bstr_t</h3>
+<pre><code>:::cpp
+// BSTR to _bst_t
+
+BSTR bstrStart = GetBSTR();
+
+// use the constructor
+_bstr_t bstrFinal(bstrStart);
+
+ShowBSTR(bstrFinal);
+
+// Use the = operator
+bstrFinal = bstrStart;
+
+ShowBSTR(bstrFinal);
+
+</code></pre>
+<h3> Converting a _bstr_t to BSTR</h3>
+<p>You may want to get a BSTR from a _bstr_t class.</p>
+<pre><code>:::cpp
+// _bstr_t to BSTR
+
+_bstr_t bstrStart(_T("This is the test string."));
+
+BSTR bstrFinish;
+
+// use _bstr_t::copy member function
+bstrFinish = bstrStart.copy();
+
+ShowBSTR(bstrFinish);
+
+// use = operator
+bstrFinish = bstrStart;
+
+ShowBSTR(bstrFinish);
+
+</code></pre>
+<h3> Converting a CComBSTR to BSTR</h3>
+<p>You may want to get a BSTR from a CComBSTR class.</p>
+<pre><code>:::cpp
+// CComBSTR to BSTR
+CComBSTR bstrStart(_T("This is the test string."));
+
+BSTR bstrFinish;
+
+// use the = operator
+bstrFinish = bstrStart;
+
+ShowBSTR(bstrFinish);
+
+// use the Copy member function
+bstrFinish = bstrStart.Copy();
+
+ShowBSTR(bstrFinish);
+</code></pre>
+<h3> Converting _bstr_t to CComBSTR</h3>
+<pre><code>:::cpp
+// _bstr_t to CComBSTR
+_bstr_t bstrStart(_T("This is the test string."));
+
+CComBSTR bstrFinish;  
+
+bstrFinish.AppendBSTR(bstrStart);
+
+ShowBSTR(bstrFinish);
+</code></pre>
+<h3> Converting BSTR to C String</h3>
+<p>*(Note :-  conversion that only works in Unicode)*</p>
+<pre><code>:::cpp
+// BSTR to C String
+
+BSTR bstrStart;
+
+bstrStart = GetBSTR();
+
+TCHAR szFinal[255];
+
+// direct conversion from BSTR to LPCTSTR only works in Unicode
+_stprintf(szFinal, _T("%s"), (LPCTSTR)bstrStart);
+AfxMessageBox(szFinal);
+
+_bstr_t bstrIntermediate(bstrStart); // convert to _bstr_t
+CString strFinal;
+
+// you have to go through _bstr_t to have it work in ANSI and Unicode    
+_stprintf(szFinal, _T("%s"), (LPCTSTR)bstrIntermediate);
+
+// Or using MFC
+
+strFinal.Format(_T("%s"), (LPCTSTR)bstrIntermediate);
+
+AfxMessageBox(strFinal);
+</code></pre>
+<h3> Converting _bstr_t to C String</h3>
+<p>*(this works in both ANSI and Unicode)*</p>
+<pre><code>:::cpp
+_bstr_t bstrStart(_T("This is the test string.")); 
+TCHAR szFinal[255];
+
+_stprintf(szFinal, _T("%s"), (LPCTSTR)bstrStart);
+
+AfxMessageBox(szFinal);
+
+</code></pre>
+<h3> Converting CComBSTR to LPCTSTR</h3>
+<p>*(not possible, must go through _bstr_t )*</p>
+<pre><code>:::cpp
+// CComBSTR to C String
+CComBSTR bstrStart("This is the test string.");
+
+_bstr_t bstrIntermediate(bstrStart);
+
+TCHAR szFinal[255];
+
+_stprintf(szFinal, _T("%s"), (LPCTSTR)bstrIntermediate);
+
+AfxMessageBox(szFinal);
+</code></pre>
+<h3> Converting LPCTSTR to _bstr_t</h3>
+<p>*(Use a constructor or = operator)*</p>
+<pre><code>:::cpp
+// LPCTSTR to _bstr_t
+
+LPCTSTR szStart = _T("This is the text string");
+
+// Use the constructor
+_bstr_t bstrFinal(szStart);
+
+ShowBSTR(bstrFinal);
+
+// or use = operator
+bstrFinal = szStart;
+
+ShowBSTR(bstrFinal);
+</code></pre>
+<h3> Converting LPCTSTR to CComBSTR</h3>
+<p>*Use a constructor or CComBSTR::Append function*</p>
+<pre><code>:::cpp
+// LPCTSTR to CComBSTR
+
+// Use a constructor    
+
+LPCTSTR szStart = _T("This is the text string");
+
+// Use the constructor
+CComBSTR bstrFinal(szStart);
+
+ShowBSTR(bstrFinal);
+
+// Or use the Append function
+bstrFinal.Empty();
+bstrFinal.Append(szStart);
+
+ShowBSTR(bstrFinal);
+</code></pre>
+<h2> Conclusion</h2>
+<p>Well I tested all of the conversion in the demo project.  If you need to try others, download the demo for easy modification.  I am sure I will hear if there are any mistakes!</p>
+
+
+</body>
+</html>
+<script type="text/javascript">
+(function(){
+document.title = $('h1').html() || '文档平台－百度新闻';    
+})();
+</script>

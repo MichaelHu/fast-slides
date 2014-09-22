@@ -3,8 +3,8 @@
 TMPFILE=$1.__tmp__
 SRCDIR=`dirname $1`
 PREVIEWFILE=$1.preview.html
-MARKDOWNCMD=/Users/hudamin/projects/git/git-myscripts/markdown/bin/slides/mac/markdown
-ROOT=/Users/hudamin/projects/git/git-myscripts/markdown/bin/slides
+MARKDOWNCMD=/Users/hudamin/projects/git/fast-slides/mac/markdown
+ROOT=/Users/hudamin/projects/git/fast-slides
 TPL=tpl
 
 REVEAL="_reveal"

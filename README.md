@@ -74,8 +74,55 @@ Markdown爱好者的福音 ———— 帮助您将Markdown语法编写的文�
                 int main(){
                     printf("Hello, World!");
                 }
-3. todo...
+3.  标签属性：`@[attr-list]`
+    * 标签属性位于内容开始处，举例如下：
+
+            ## @[class="fragment"]Slide Title 
+            * @[class="fragment"]Red 
+            * @[class="fragment"]Yellow 
+            * @[class="fragment"]Blue 
+
+        会产生以下输出，从而作为reveal的fragment存在：
+
+            <h2 class="fragment">Slide Title</h2>
+            <ul><li class="fragment">Red</li>
+            <li class="fragment">Yellow</li>
+            <li class="fragment">Blue</li></ul>
+
+    * 其他的有序列表，段落，代码等也可以支持标签属性，也简单举例如下：
+
+            ## 有序列表举例
+            1. One
+            2. @[style="color:red"]Two
+            3. Three
+
+            ## 段落举例 
+            @[class="fragment"]这里是一个段落
+
+            ## 代码举例
+                @[class="fragment"]#include <stdio.h>
+                int main(){
+                    printf("Hello, World!!\n");
+                }
+
+        会产生以下输出：
+
+            <h2>有序列表举例</h2>
+            <ol><li>One</li>
+            <li style="color:red">Two</li>
+            <li>Three</li></ol>
+
+            <h2>段落举例</h2>
+            <p class="fragment">这里是一个段落</p>
     
+            <h2>代码举例</h2>
+            <pre><code class="fragment">#include &lt;stdio.h>
+            int main(){
+                printf("Hello, World!!\n");
+            }
+            </code></pre>
+
+
 ## 安装和使用
 
 下载程序包并在本地做简单部署，就可以了。具体说明一下：

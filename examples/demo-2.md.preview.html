@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Fast Slides</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="lib/reveal/css/reveal.css">
+		<link rel="stylesheet" href="lib/reveal/css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="lib/slides/css/markdown.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/other/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'lib/reveal/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/other/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script src="lib/other/js/jquery-1.9.1.min.js"></script>
+		<script src="lib/other/js/head.min.js"></script>
+		<script src="lib/reveal/js/reveal.min.js"></script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+
+
+
+
+
+
+<section >
+<h1> 工作报告</h1>
+<p>MichaelHu / 2014-09</p>
+
+</section>
+<section >
+<h2> 大纲</h2>
+<ul><li>一季度项目和总结</li>
+<li>二季度项目和总结</li>
+<li>下半年工作计划 </li></ul>
+
+</section>
+<section >
+<h2> 一季度项目和总结</h2>
+<p>...</p>
+
+</section>
+
+
+
+
+
+
+
+
+
+			</div>
+
+		</div>
+
+<script>
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    controls: true
+    , progress: true
+    , history: true
+    , center: true
+
+    , theme: Reveal.getQueryHash().theme
+    , transition: Reveal.getQueryHash().transition || 'default'
+
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
+
+    // Optional libraries used to extend on reveal.js
+    , dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } }
+    /*
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    */
+    ]
+});
+
+(function(){
+    var $h1 = $('.slides h1'),
+        $h2 = $('.slides h2'),
+        $section = $('.slides section');
+
+    if($h1.length){
+        document.title = $h1.text();
+        return;
+    }
+
+    if($h2.length){
+        document.title = $h2.text();
+        return;
+    }
+
+    if($section.length){
+        document.title = $section.text().substr(0, 30);
+    }
+
+})();
+
+</script>
+
+	</body>
+</html>

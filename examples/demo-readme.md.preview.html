@@ -1,0 +1,410 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Fast Slides</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="lib/reveal/css/reveal.css">
+		<link rel="stylesheet" href="lib/reveal/css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="lib/slides/css/markdown.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/other/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'lib/reveal/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/other/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script src="lib/other/js/jquery-1.9.1.min.js"></script>
+		<script src="lib/other/js/head.min.js"></script>
+		<script src="lib/reveal/js/reveal.min.js"></script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+
+
+
+
+
+
+<section >
+<h1> fast-slides</h1>
+<p>MichaelHu / 2014-09</p>
+
+</section>
+<section >
+<p>帮助您将<code class="fragment highlight-red">Markdown文档</code>快速转换成
+<code class="fragment highlight-red">HTML5幻灯片</code></p>
+
+</section>
+<section >
+<h2> 特性？</h2>
+<ul><li><code class="fragment highlight-green">纯绿色版</code>，下载至本地，稍作配置后就可以使用</li>
+<li>支持<code class="fragment highlight-red">windows，mac和linux</code>平台</li>
+<li>在当前目录下自动生成以<code class="fragment highlight-red">.preview.html</code>为后缀的幻灯片文件，方便您直接打包发布</li>
+<li>支持<code class="fragment highlight-red">file://</code>本地访问，当然更可以部署到web服务器访问</li></ul>
+
+</section>
+<section >
+<p>这一切，只需要一个命令</p>
+<pre class="fragment"><code>slides FILE
+</code></pre>
+
+</section>
+<section >
+<p>和对Markdown文档稍作改动</p>
+
+</section>
+<section >
+<p>以下Markdown文件：</p>
+<pre><code># 工作报告
+MichaelHu / 2014-09
+
+## 大纲
+* 一季度项目和总结
+* 二季度项目和总结
+* 下半年工作计划 
+
+## 一季度项目和总结
+...
+</code></pre>
+
+</section>
+<section >
+<p>只需稍作改动：</p>
+<pre><code>@s
+# 工作报告
+MichaelHu / 2014-09
+
+@s
+## 大纲
+* 一季度项目和总结
+* 二季度项目和总结
+* 下半年工作计划 
+
+@s
+## 一季度项目和总结
+...
+</code></pre>
+
+</section>
+<section >
+<h2> 具体怎么写？ </h2>
+<ul><li class="fragment">文档使用<code class="fragment highlight-blue">markdown语法</code>编写</li>
+<li class="fragment">建议保存成<code class="fragment highlight-blue">.md</code>后缀的文本文件</li>
+<li class="fragment">文件编码统一为<code class="fragment highlight-blue">UTF-8</code></li></ul>
+
+</section>
+<section >
+<h3> 2.1 基础语法</h3>
+<p>在markdown语法基础上进行了扩展，markdown语法请参考<a href="https://github.com/MichaelHu/fast-slides/blob/master/docs/grammar.md">这里</a></p>
+
+</section>
+<section >
+<h3> 2.2 扩展语法</h3>
+
+</section>
+<section >
+<h4> 2.2.1 幻灯片分隔符  </h4>
+<p class="fragment"><code style="color:red">@s [attr-list]</code></p>
+
+</section>
+<section>
+	<section >
+<p>用于分隔幻灯片，必须从第一列开始写，单独一行</p>
+<p class="fragment" style="color:red">提示：按DOWN键，至内容不再变化</p>
+
+	</section>
+	<section >
+<pre><code>@s
+# 第一张幻灯片标题
+内容
+
+@s
+## 第二张幻灯片标题
+1. red
+2. green
+3. yellow
+</code></pre>
+
+	</section>
+	<section >
+<pre><code>@s data-transition="linear"
+## 第二张幻灯片标题
+1. red
+2. green
+3. yellow
+</code></pre>
+
+	</section>
+</section>
+<section >
+<h4> 2.2.2 垂直幻灯片分隔符</h4>
+<p class="fragment"><code style="color:red">@vs [attr-list]</code></p>
+
+</section>
+<section>
+	<section >
+<p>分隔垂直幻灯片，必须从第一列开始写，单独一行</p>
+<p class="fragment" style="color:red">提示：按DOWN键，还有更多内容</p>
+
+	</section>
+	<section >
+<pre><code>@vs
+## 第一张垂直幻灯片标题
+1. red
+2. green
+3. yellow
+
+@vs data-background-color="#ff8855"
+## 第二张垂直幻灯片标题
+* China
+* America 
+* England
+</code></pre>
+
+	</section>
+</section>
+<section >
+<h4> 2.2.3 标签属性</h4>
+<p class="fragment"><code style="color:red">@[attr-list]</code></p>
+<p class="fragment">为即将生成的标签添加属性</p>
+
+</section>
+<section>
+	<section >
+<ul><li>标签属性位于<code class="fragment highlight-red">内容开始</code>处</li>
+<li class="fragment" style="color:red">提示：按Down键还有更多内容</li></ul>
+
+	</section>
+	<section >
+<p>这么写：</p>
+<pre class="fragment"><code>## @[class="fragment"]Slide Title 
+* @[class="fragment"]Red 
+* @[class="fragment"]Yellow 
+* @[class="fragment"]Blue 
+</code></pre>
+
+	</section>
+	<section >
+<ul><li>会产生以下输出：<pre class="fragment"><code>&lt;h2 class="fragment">Slide Title&lt;/h2>
+&lt;ul>&lt;li class="fragment">Red&lt;/li>
+&lt;li class="fragment">Yellow&lt;/li>
+&lt;li class="fragment">Blue&lt;/li>&lt;/ul>
+</code></pre>
+</li></ul>
+
+	</section>
+	<section >
+<ul><li>其他的有序列表、段落、代码等也可以支持标签属性</li></ul>
+
+	</section>
+	<section >
+<p>这么写：</p>
+<pre class="fragment"><code>## 有序列表举例
+1. One
+2. @[style="color:red"]Two
+3. Three
+</code></pre>
+
+	</section>
+	<section >
+<ul><li>会产生以下输出：<pre class="fragment"><code>&lt;h2>有序列表举例&lt;/h2>
+&lt;ol>&lt;li>One&lt;/li>
+&lt;li style="color:red">Two&lt;/li>
+&lt;li>Three&lt;/li>&lt;/ol>
+</code></pre>
+</li></ul>
+
+	</section>
+	<section >
+<p>这么写：</p>
+<pre class="fragment"><code>## 段落举例 
+@[class="fragment"]这里是一个段落
+</code></pre>
+
+	</section>
+	<section >
+<ul><li>会产生以下输出：<pre class="fragment"><code>&lt;h2>段落举例&lt;/h2>
+&lt;p class="fragment">这里是一个段落&lt;/p>
+</code></pre>
+</li></ul>
+
+	</section>
+	<section >
+<p>这么写：</p>
+<pre class="fragment"><code>## 代码举例
+    @[class="fragment"]#include &lt;stdio.h>
+    int main(){
+        printf("Hello, World!!\n");
+    }
+</code></pre>
+
+	</section>
+	<section >
+<p>会产生以下输出：</p>
+<pre class="fragment"><code>&lt;h2>代码举例&lt;/h2>
+&lt;pre class="fragment">&lt;code>#include &amp;lt;stdio.h>
+    int main(){
+        printf("Hello, World!!\n");
+    }
+&lt;/code>&lt;/pre>
+</code></pre>
+
+	</section>
+</section>
+<section >
+<h2> 安装和使用</h2>
+
+</section>
+<section >
+<p>下载程序包并简单部署即可。</p>
+
+</section>
+<section >
+<ul><li><code>下载</code>：<ol><li class="fragment"><code style="color:red">git clone</code><pre><code>git clone https://github.com/MichaelHu/fast-slides.git
+</code></pre>
+</li>
+<li class="fragment">也可以直接通过<code style="color:red">[Download ZIP]按钮</code>将项目文件下载到本地</li></ol>
+</li></ul>
+
+</section>
+<section >
+<ul><li><code>部署以及使用方法</code>：</li></ul>
+
+</section>
+<section >
+<ul><li><code style="color:red;font-size:1.5em;">Windows</code>：<ol><li class="fragment">下载以后解包至<code>C:\slides</code></li>
+<li class="fragment">将<code>C:\slides\slides.bat</code>拷贝至<code>C:\WINDOWS\system32</code></li>
+<li class="fragment">使用方式：<pre><code>slides.bat FILENAME
+</code></pre>
+</li>
+<li class="fragment">按以上方式解包，即可正常使用。如果需要自己更换目录，则需要修改<code>slides.bat</code>中对应路径参数。<p>如果不熟悉<code>bat文件</code>，则不建议修改，而使用默认部署</p>
+</li></ol>
+</li></ul>
+
+</section>
+<section >
+<ul><li><code style="color:red;font-size:1.5em;">Mac</code>:<ol><li class="fragment">下载以后解包至某一本地目录，例如<code>DIR/slides</code> </li>
+<li class="fragment">修改<code>DIR/slides/slides-mac.sh</code>，将<pre><code>MARKDOWNCMD=/Users/hudamin/projects/git/git-myscripts/markdown/bin/slides/mac/markdown
+ROOT=/Users/hudamin/projects/git/git-myscripts/markdown/bin/slides
+</code></pre>
+<p>修改成：</p>
+<pre><code>MARKDOWNCMD=DIR/slides/mac/markdown
+ROOT=DIR/slides
+</code></pre>
+</li>
+<li class="fragment">将<code>DIR/slides/slides-mac.sh</code>拷贝成<code>~/bin/slides</code></li>
+<li class="fragment">设置<code>可执行权限</code><pre><code>chmod +x slides
+</code></pre>
+</li>
+<li class="fragment">使用方式：<pre><code>slides FILENAME 
+</code></pre>
+</li></ol>
+</li></ul>
+
+</section>
+<section >
+<ul><li><code style="color:red;font-size:1.5em;">Unix</code>：<p>与<code>Mac</code>非常类似，只需将<code>mac</code>出现的地方改成<code>unix</code>即可。</p>
+</li></ul>
+
+</section>
+<section >
+<h2 style="text-align:center">祝您用餐愉快</h2>
+
+</section>
+
+
+
+
+
+
+
+
+
+			</div>
+
+		</div>
+
+<script>
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    controls: true
+    , progress: true
+    , history: true
+    , center: true
+
+    , theme: Reveal.getQueryHash().theme
+    , transition: Reveal.getQueryHash().transition || 'default'
+
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
+
+    // Optional libraries used to extend on reveal.js
+    , dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } }
+    /*
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    */
+    ]
+});
+
+(function(){
+    var $h1 = $('.slides h1'),
+        $h2 = $('.slides h2'),
+        $section = $('.slides section');
+
+    if($h1.length){
+        document.title = $h1.text();
+        return;
+    }
+
+    if($h2.length){
+        document.title = $h2.text();
+        return;
+    }
+
+    if($section.length){
+        document.title = $section.text().substr(0, 30);
+    }
+
+})();
+
+</script>
+
+	</body>
+</html>

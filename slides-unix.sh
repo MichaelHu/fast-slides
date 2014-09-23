@@ -18,7 +18,10 @@ cat "$1" "$ROOT/file_empty_line" > "$TMPFILE"
 $MARKDOWNCMD "$TMPFILE" | cat "$ROOT/$TPL/header${REVEAL}.tpl.html" - "$ROOT/$TPL/footer${REVEAL}.tpl.html" \
     > "$PREVIEWFILE" \
     && mkdir -p $SRCDIR/lib \
-    && cp -r $ROOT/lib/* $SRCDIR/lib \
-    && open "$PREVIEWFILE"
+    && cp -r $ROOT/lib/* $SRCDIR/lib 
+
+if [ "$2" == "" -o "$2" == "noreveal" ]; then
+    open "$PREVIEWFILE"
+fi
 
 rm "$TMPFILE"

@@ -12,10 +12,15 @@ Markdown爱好者的福音 ———— 帮助您将Markdown语法编写的文�
 就能在浏览器中看到酷炫的幻灯片了，有木有觉得很酷。
 
 
-* 不需安装第三方运行库，下载至本地，稍作配置后就可以使用
+* 纯绿色版，下载至本地，稍作配置后就可以使用
 * 支持windows，mac和linux平台
 * 在当前目录下自动生成以`.preview.html`为后缀的幻灯片文件
 * 支持`file://`本地访问，当然更可以部署到web服务器访问
+
+
+感谢<a href="https://github.com/hakimel/reveal.js">reveal.js</a>
+
+另，本文档的HTML5幻灯片版本<a href="http://258i.com/fast-slides/examples/demo-readme.md.preview.html?theme=default&transition=concave">传送门：Fast-Slides</a>
 
 ## 先睹为快
 

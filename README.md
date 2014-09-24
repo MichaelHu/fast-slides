@@ -18,7 +18,7 @@ Markdown爱好者的福音 ———— 帮助您将Markdown语法编写的文�
 * 支持`file://`本地访问，当然更可以部署到web服务器访问
 
 
-感谢<a href="https://github.com/hakimel/reveal.js">reveal.js</a>
+感谢<a href="https://github.com/hakimel/reveal.js">reveal.js</a>，它提供了幻灯片的前端框架。
 
 另，本文档的HTML5幻灯片版本<a href="http://258i.com/fast-slides/examples/demo-readme.md.preview.html?theme=default&transition=concave" target="_blank">传送门：Fast-Slides</a>
 

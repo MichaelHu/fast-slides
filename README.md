@@ -48,6 +48,15 @@ Markdown爱好者的福音 ———— 帮助您将Markdown语法编写的文�
     ## 一季度项目和总结
     ...
 
+就可以转成幻灯片了，
+<a href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=night&transition=concave">点此查看幻灯片：工作报告</a>
+
+通过`修改访问地址的查询参数`，还可以看到不同主题和切换效果的幻灯片：
+
+<a href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=moon&transition=fade">工作报告（moon主题、渐隐渐现）</a>
+
+<a href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=default&transition=linear">工作报告(默认主题、线性切换)</a>
+
 
 ## 文档编码和后缀 
 

@@ -61,6 +61,12 @@ MichaelHu / 2014-09
     ...
 
 @s
+就可以轻松转成HTML5幻灯片了
+<a class="fragment" target="_blank"
+href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=night&transition=concave">
+[ 传送门 ]</a>
+
+@s
 ## 具体怎么写？ 
 
 * @[class="fragment"]文档使用`@[class="fragment highlight-blue"]markdown语法`编写

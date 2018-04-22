@@ -1,6 +1,6 @@
 {
   "name": "fast-slides",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A HTML presentation generator based on markdown, reveal.js",
   "main": "index.js",
   "directories": {
@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-      "tm": "bin/fast-slides"
+      "fast-slides": "bin/fast-slides"
   },
   "repository": {
     "type": "git",

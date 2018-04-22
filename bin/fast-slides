@@ -1,0 +1,76 @@
+#! /usr/bin/env node 
+
+var path = require( 'path' );
+var fs = require( 'fs' );
+var os = require( 'os' );
+var execFileSync = require( 'child_process' ).execFileSync;
+var args = process.argv;
+var platform = process.platform;
+var thisDir = __dirname;
+var rootDir = path.resolve( thisDir, '../' );
+var platform = os.platform();
+platform = platform == 'darwin' 
+    ? 'mac' 
+    : platform == 'win32' 
+        ? 'win'
+        : 'unix'
+    ;
+
+var scriptPath = path.resolve( rootDir, './slides-' + platform + '.sh' );
+var cmdPath = path.resolve( rootDir, platform, 'markdown' );
+var childArgs = [];
+var confFilePath = path.resolve( rootDir, 'package.json' );
+var conf = fs.readFileSync( confFilePath, { encoding: 'utf-8' } );
+
+conf = JSON.parse( conf );
+// console.log( conf );
+
+if ( args.indexOf( '-V' ) >= 0 
+    || args.indexOf( '--version' ) >= 0 ) {
+    showDescription();
+    return;
+}
+
+// $ node tm arg1 arg2 arg3 
+// console.log( args );
+if ( args.length < 3 
+    || args.indexOf( '--help' ) >= 0
+    || args.indexOf( '-H' ) >= 0
+    ) {
+    showDescription();
+    console.log( [ 
+        'Usage: '
+        , '    tm <-V | --version>' 
+        , '    tm <-H | --help>'
+        , '    tm <file> [--local] [--no-preview]'
+    ].join( '\n' ) );
+    return;
+}
+childArgs = childArgs.concat( args.slice( 2 ) ); 
+
+var filePath = childArgs[ 0 ]; 
+
+if ( !fs.existsSync( filePath ) ) {
+    showDescription();
+    console.log( 'the file "' + filePath + '" not exists!' ); 
+    return;
+}
+
+// console.log( scriptPath, rootDir, cmdPath, childArgs );
+
+var result = execFileSync( 
+    scriptPath
+    , childArgs 
+    , {
+        env: {
+            MARKDOWN_SLIDES_ROOT: rootDir
+            , MARKDOWN_SLIDES_CMD: cmdPath 
+        }
+    }
+);
+
+console.log( result.toString() );
+
+function showDescription() {
+    console.log( 'fast-slides ( v' + conf.version + ' )' );
+}

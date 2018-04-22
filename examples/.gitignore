@@ -1,0 +1,6 @@
+.DS_Store
+*.md.html
+*.md.preview.html
+*.swp
+*.swo
+__reveal-lib/

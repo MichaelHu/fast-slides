@@ -1,7 +1,7 @@
 @s
 # fast-slides
 
-MichaelHu / 2014-09
+### MichaelHu / 2014-09
 
 
 
@@ -75,7 +75,7 @@ href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=night&tr
 
 
 @s
-### 2.1 基础语法
+### 基础语法
 在markdown语法基础上进行了扩展，markdown语法请参考<a href="https://github.com/MichaelHu/fast-slides/blob/master/docs/grammar.md">这里</a>
 
 
@@ -83,11 +83,11 @@ href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=night&tr
 
 
 @s
-### 2.2 扩展语法
+### 扩展语法
 
 
 @s
-#### 2.2.1 幻灯片分隔符  
+#### 幻灯片分隔符  
 
 @[class="fragment"]`@[style="color:red"]@s [attr-list]`
 
@@ -115,7 +115,7 @@ href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=night&tr
     3. yellow
 
 @s
-#### 2.2.2 垂直幻灯片分隔符
+#### 垂直幻灯片分隔符
 
 @[class="fragment"]`@[style="color:red"]@vs [attr-list]`
 
@@ -140,7 +140,7 @@ href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=night&tr
     * England
 
 @s
-#### 2.2.3 标签属性
+#### 标签属性
 
 @[class="fragment"]`@[style="color:red"]@[attr-list]`
 
@@ -225,53 +225,58 @@ href="http://258i.com/fast-slides/examples/demo-2.md.preview.html?theme=night&tr
 下载程序包并简单部署即可。
 
 @s
-* `下载`：
-    1. @[class="fragment"]`@[style="color:red"]git clone`
+### 下载
 
-            git clone https://github.com/MichaelHu/fast-slides.git
+1. @[class="fragment"]`@[style="color:red"]git clone`
 
-    2. @[class="fragment"]也可以直接通过`@[style="color:red"][Download ZIP]按钮`将项目文件下载到本地
+        git clone https://github.com/MichaelHu/fast-slides.git
 
-@s
-* `部署以及使用方法`：
-
-@s
-* `@[style="color:red;font-size:1.5em;"]Windows`：
-    1. @[class="fragment"]下载以后解包至`C:\slides`
-    2. @[class="fragment"]将`C:\slides\slides.bat`拷贝至`C:\WINDOWS\system32`
-    3. @[class="fragment"]使用方式：
-
-            slides.bat FILENAME
-
-    4. @[class="fragment"]按以上方式解包，即可正常使用。如果需要自己更换目录，则需要修改`slides.bat`中对应路径参数。
-        如果不熟悉`bat文件`，则不建议修改，而使用默认部署
+2. @[class="fragment"]也可以直接通过`@[style="color:red"][Download ZIP]按钮`将项目文件下载到本地
 
 
 @s
-* `@[style="color:red;font-size:1.5em;"]Mac`:
-    1. @[class="fragment"]下载以后解包至某一本地目录，例如`DIR/slides` 
-    2. @[class="fragment"]修改`DIR/slides/slides-mac.sh`，将
-
-            MARKDOWNCMD=/Users/hudamin/projects/git/git-myscripts/markdown/bin/slides/mac/markdown
-            ROOT=/Users/hudamin/projects/git/git-myscripts/markdown/bin/slides
-
-        修改成：
-
-            MARKDOWNCMD=DIR/slides/mac/markdown
-            ROOT=DIR/slides
-
-    3. @[class="fragment"]将`DIR/slides/slides-mac.sh`拷贝成`~/bin/slides`
-    4. @[class="fragment"]设置`可执行权限`
-
-            chmod +x slides
-
-    5. @[class="fragment"]使用方式：
-
-            slides FILENAME 
+### 部署以及使用方法
 
 @s
-* `@[style="color:red;font-size:1.5em;"]Unix`：
-    与`Mac`非常类似，只需将`mac`出现的地方改成`unix`即可。
+#### @[style="color:red;font-size:1.5em;"]Windows
+
+1. @[class="fragment"]下载以后解包至`C:\slides`
+2. @[class="fragment"]将`C:\slides\slides.bat`拷贝至`C:\WINDOWS\system32`
+3. @[class="fragment"]使用方式：
+
+        slides.bat FILENAME
+
+4. @[class="fragment"]按以上方式解包，即可正常使用。如果需要自己更换目录，则需要修改`slides.bat`中对应路径参数。
+    如果不熟悉`bat文件`，则不建议修改，而使用默认部署
+
+
+@s
+#### @[style="color:red;font-size:1.5em;"]Mac
+
+1. @[class="fragment"]下载以后解包至某一本地目录，例如`DIR/slides` 
+2. @[class="fragment"]修改`DIR/slides/slides-mac.sh`，将
+
+        MARKDOWNCMD=/Users/hudamin/projects/git/git-myscripts/markdown/bin/slides/mac/markdown
+        ROOT=/Users/hudamin/projects/git/git-myscripts/markdown/bin/slides
+
+    修改成：
+
+        MARKDOWNCMD=DIR/slides/mac/markdown
+        ROOT=DIR/slides
+
+3. @[class="fragment"]将`DIR/slides/slides-mac.sh`拷贝成`~/bin/slides`
+4. @[class="fragment"]设置`可执行权限`
+
+        chmod +x slides
+
+5. @[class="fragment"]使用方式：
+
+        slides FILENAME 
+
+@s
+#### @[style="color:red;font-size:1.5em;"]Unix
+
+与`Mac`非常类似，只需将`mac`出现的地方改成`unix`即可。
 
 
 

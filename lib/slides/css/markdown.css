@@ -1,3 +1,4 @@
+/*
 .reveal .slides {
 	text-align: left;
 }
@@ -8,4 +9,13 @@
 
 .no-transforms .reveal .slides {
 	text-align: left;
+}
+*/
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    line-height: 2 !important;
+}
+
+.reveal .slides section {
+    line-height: 1.8 !important;
 }

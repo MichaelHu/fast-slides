@@ -1,0 +1,33 @@
+{
+  "name": "fast-slides",
+  "version": "2.0.0",
+  "description": "A HTML presentation generator based on markdown, reveal.js",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+      "tm": "bin/fast-slides"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelHu/fast-slides.git"
+  },
+  "keywords": [
+    "HTML",
+    "presentation",
+    "ppt",
+    "markdown",
+    "reveal.js"
+  ],
+  "author": "MichaelHu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichaelHu/fast-slides/issues"
+  },
+  "homepage": "https://github.com/MichaelHu/fast-slides#readme"
+}

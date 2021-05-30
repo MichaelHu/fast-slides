@@ -13,13 +13,26 @@
 
 
 @s
-## 特性？
-* `@[class="fragment highlight-green"]纯绿色版`，下载至本地，稍作配置后就可以使用
+## 特性
+
+* 基于`reveal.js`
 * 支持`@[class="fragment highlight-red"]windows，mac和linux`平台
-* 在当前目录下自动生成以`@[class="fragment highlight-red"].preview.html`为后缀的幻灯片文件，方便您直接打包发布
+* 在当前目录下自动生成以`@[class="fragment highlight-red"].html`为后缀的幻灯片文件，方便您直接打包发布或分享
 * 支持`@[class="fragment highlight-red"]file://`本地访问，当然更可以部署到web服务器访问
 
 
+
+@s
+## 安装
+
+    $ npm i -g fast-slides
+
+
+@s
+## 使用
+
+    $ fast-slides <file>
+    $ fast-slides <file> --no-preview
 
 @s
 这一切，只需要一个命令
